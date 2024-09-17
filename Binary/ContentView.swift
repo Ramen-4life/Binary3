@@ -8,12 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var binary: Int = 0
+    @State var binaryConv = 0
+    @State var number = 0
+    @State var numberConv = 0
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            HStack {
+                Text("Enter Binary:")
+                TextField("", value: $binary, format: .number)
+                    .textFieldStyle(.roundedBorder)
+                    .padding()
+                Button(action: {
+                    
+                }, label: {
+                    Text("Convert to base 10")
+                })
+            }
+            Text("\(binary) in base 10 is: \(binaryConv)")
+            Divider()
+            HStack {
+                Text("Enter number:")
+                TextField("", value: $number, format: .number)
+                    .textFieldStyle(.roundedBorder)
+                    .padding()
+                Button(action: {
+                    
+                }, label: {
+                    Text("Convert to binary")
+                })
+            }
+            Text("\(number) in binary is: \(numberConv)")
         }
         .padding()
     }
