@@ -1,28 +1,29 @@
 //
-//  ContentView.swift
+//  Hexadecimal.swift
 //  Binary
 //
 //  Created by Quincy Alex on 9/17/24.
 //
 
+import Foundation
 import SwiftUI
 
-struct ContentView: View {
-    @State var binary = 0
-    @State var binaryConv = 0
+struct Hexadecimal: View {
+    @State var hexadecimal = ""
+    @State var hexadecimalConv = 0
     @State var number = 0
-    @State var numberConv = 0
+    @State var numberConv = ""
     var body: some View {
         NavigationStack {
+            NavigationLink(" <- Binary Converter") {
+                ContentView()
+            }
+            .font(.title)
+            Divider()
             VStack {
-                NavigationLink("Hexadecimal Converter ->") {
-                    Hexadecimal()
-                }
-                .font(.title)
-                Divider()
                 HStack {
-                    Text("Enter Binary:")
-                    TextField("", value: $binary, format: .number)
+                    Text("Enter Hexadecimal:")
+                    TextField("Enter Hexadeciaml", text: $hexadecimal)
                         .textFieldStyle(.roundedBorder)
                         .padding()
                     Button(action: {
@@ -31,27 +32,22 @@ struct ContentView: View {
                         Text("Convert to base 10")
                     })
                 }
-                Text("\(binary) in base 10 is: \(binaryConv)")
+                Text("\(hexadecimal) in base 10 is: \(hexadecimalConv)")
                 Divider()
                 HStack {
-                    Text("Enter number:")
+                    Text("Enter Number:")
                     TextField("", value: $number, format: .number)
                         .textFieldStyle(.roundedBorder)
                         .padding()
                     Button(action: {
                         
                     }, label: {
-                        Text("Convert to binary")
+                        Text("Convert to Hexadecimal")
                     })
                 }
-                Text("\(number) in binary is: \(numberConv)")
-                
+                Text("\(number) in hexadecimal is: \(numberConv)")
             }
             .padding()
         }
     }
-}
-
-#Preview {
-    ContentView()
 }
