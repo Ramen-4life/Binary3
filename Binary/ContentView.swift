@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var binary = 0
+    @State var binary = ""
     @State var binaryConv = 0
     @State var number = 0
-    @State var numberConv = 0
+    @State var numberConv = ""
     var body: some View {
         NavigationStack {
             VStack {
@@ -22,16 +22,16 @@ struct ContentView: View {
                 Divider()
                 HStack {
                     Text("Enter Binary:")
-                    TextField("", value: $binary, format: .number)
+                    TextField("", text: $binary)
                         .textFieldStyle(.roundedBorder)
                         .padding()
                     Button(action: {
-                        
+                        binaryConv = Int(binary, radix: 2)!
                     }, label: {
-                        Text("Convert to base 10")
+                        Text("Convert to decimal")
                     })
                 }
-                Text("\(binary) in base 10 is: \(binaryConv)")
+                Text("\(binary) in decimal is: \(binaryConv)")
                 Divider()
                 HStack {
                     Text("Enter number:")
@@ -39,7 +39,7 @@ struct ContentView: View {
                         .textFieldStyle(.roundedBorder)
                         .padding()
                     Button(action: {
-                        
+                        numberConv = String(number, radix: 2)
                     }, label: {
                         Text("Convert to binary")
                     })
