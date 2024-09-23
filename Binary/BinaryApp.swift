@@ -12,6 +12,12 @@ struct BinaryApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            TabView {
+                Text("Hexa")
+                    .tabItem {
+                        Label("", image: "star")
+                    }
+            }
         }
     }
 }

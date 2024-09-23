@@ -14,25 +14,22 @@ struct Hexadecimal: View {
     @State var number = 0
     @State var numberConv = ""
     var body: some View {
-        NavigationStack {
-            NavigationLink(" <- Binary Converter") {
-                ContentView()
-            }
-            .font(.title)
-            Divider()
             VStack {
+                Text("Hexadecimal Converter")
+                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                Divider()
                 HStack {
                     Text("Enter Hexadecimal:")
                     TextField("Enter Hexadeciaml", text: $hexadecimal)
                         .textFieldStyle(.roundedBorder)
                         .padding()
                     Button(action: {
-                        
+                        hexadecimalConv = Int(hexadecimal, radix: 16)!
                     }, label: {
-                        Text("Convert to base 10")
+                        Text("Convert decimal")
                     })
                 }
-                Text("\(hexadecimal) in base 10 is: \(hexadecimalConv)")
+                Text("\(hexadecimal) in decimal is: \(hexadecimalConv)")
                 Divider()
                 HStack {
                     Text("Enter Number:")
@@ -40,14 +37,14 @@ struct Hexadecimal: View {
                         .textFieldStyle(.roundedBorder)
                         .padding()
                     Button(action: {
-                        
+                        numberConv = String(number, radix: 16)
                     }, label: {
                         Text("Convert to Hexadecimal")
                     })
                 }
-                Text("\(number) in hexadecimal is: \(numberConv)")
+                Text("\(number) in hexadecimal is: \(numberConv.capitalized)")
+                Divider()
             }
             .padding()
         }
     }
-}
